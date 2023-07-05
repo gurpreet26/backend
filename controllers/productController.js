@@ -49,7 +49,7 @@ const replaceProduct = async(req,res) =>{
     const id =req.params.id;
    try {
     const product = await Product.findOneAndUpdate({_id:id},req.body,{new:true})
-
+  
     res.json(product)
     
    } catch (error) {

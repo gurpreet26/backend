@@ -3,6 +3,7 @@ import fs from 'fs'
 const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'));
 const products = data.products;
 import routes from './routes/productRouters.js'
+import UserRouter from './routes/userRoutes.js'
 
 import  express from "express";
 import path from 'path'
@@ -18,6 +19,8 @@ app.use(morgan('combined')) // used for log files
 app.use(express.json())// used becoz req body is undefined and does not show anything on client side
 app.use("/static",express.static(path.join(__dirname,"public")))
 app.use('/products', routes)
+app.use('/user', UserRouter)
+
 
 ///custom middleware just as logger
 // app.use((req, res, next)=>{
